@@ -8,6 +8,6 @@ object ListOfCities {
         City("dnipro", "https://np.pl.ua/wp-content/uploads/2020/04/dnipro.jpg"),
         City("kyiv","https://bigkyiv.com.ua/wp-content/uploads/2021/09/242306343_4582798148467241_736717668887307731_n-1-800x600.jpg"),
         City("zhmerynka","https://ukrainaincognita.com/wp-content/uploads/files/zhmerynka16_vokzal4_0.jpg"),
-
+        City()
     )
 }

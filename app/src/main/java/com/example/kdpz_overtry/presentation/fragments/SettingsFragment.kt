@@ -18,9 +18,7 @@ import com.example.kdpz_overtry.databinding.FragmentSettingsBinding
 import com.example.kdpz_overtry.presentation.adapter.CityAdapter
 import com.example.kdpz_overtry.presentation.adapter.ListOfCities.listCity
 import com.example.newnews.data.factories.ApiRun
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import okhttp3.internal.wait
 
 
@@ -44,35 +42,38 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
 
         binding.apply.setOnClickListener {
-            Log.d("beb","start")
+            Log.d("beb", "start")
             val cityName = binding.cytyName.text.toString()
             var ie = false
-            GlobalScope.launch {
-                Log.d("beb","2")
-                val temp = ApiRun.productAPi.getProductById(cityName)
-                Log.d("beb","2.0 start ifelse")
-                if(temp.cod == 200) {
-                    Log.d("beb","2.1 compared")
-                   ie = true
-                    Log.d("beb","2.2 ie = $ie (APROVE)")
+            CoroutineScope(Dispatchers.Main).launch {
+                Log.d("beb", "2")
+                try {
+                    val temp = ApiRun.productAPi.getProductById(cityName)
+                    if (temp.cod == 200) {
+                        Log.d("beb", "2.1 compared")
+                        ie = true
+                        Log.d("beb", "2.2 ie = $ie (APPROVE)")
+                    }
+
+                } catch (e: Exception) {
+                    Log.e("beb", "API call failed", e)
                 }
-                Log.d("beb","2.3 ie = $ie (APROVE)")
+                Log.d("beb", "2.3 ie = $ie (APPROVE)")
+                Log.d("beb", "3 kod - $ie - not approve")
+                if (ie) {
+                    Log.d("beb", "kod - 200")
+                    findNavController().navigate(
+                        SettingsFragmentDirections.actionSettingsFragmentToMainFragment(
+                            cityName
+                        )
+                    )
+                } else {
+                    Log.d("beb", "kod != 200")
+                    Toast.makeText(requireContext(), "City not found", Toast.LENGTH_SHORT).show()
+                }
+                Log.d("beb", "end")
             }
-            Thread.sleep(1000)
-            Log.d("beb","3 kod - $ie - not aprove")
-            if(ie) {
-                Log.d("beb","kod - 200")
-                findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMainFragment(cityName))
-            }
-            else {
-                Log.d("beb","kod != 200")
-                Toast.makeText(requireContext(), "City not found",Toast.LENGTH_SHORT).show()
-                findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMainFragment("тернопіль"))
-            }
-            Log.d("beb","end")
         }
-
-
 
 
         val setMyCityButton = activity?.findViewById<Button>(R.id.exit)
