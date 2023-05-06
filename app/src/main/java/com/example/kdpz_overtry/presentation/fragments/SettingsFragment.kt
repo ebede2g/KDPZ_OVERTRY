@@ -69,7 +69,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
                     )
                 } else {
                     Log.d("beb", "kod != 200")
-                    Toast.makeText(requireContext(), "City not found", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Місто не знайдене", Toast.LENGTH_SHORT).show()
                 }
                 Log.d("beb", "end")
             }
