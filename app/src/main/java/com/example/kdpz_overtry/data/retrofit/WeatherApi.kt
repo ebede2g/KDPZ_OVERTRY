@@ -10,7 +10,8 @@ interface ProductApi {
     suspend fun getProductById(
         @Query("q")city_name: String,
         @Query("appid") apiKey: String = myApiKey,
-        @Query("units") units: String = "metric"
+        @Query("units") units: String = "metric",
+        @Query("lang") lang: String = "ua"
     ): WeatherClass
 
 }

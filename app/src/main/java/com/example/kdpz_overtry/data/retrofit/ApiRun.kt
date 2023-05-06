@@ -12,7 +12,7 @@ object ApiRun {
 
 
 
-    val productAPi = createRetrofit().create(ProductApi::class.java)
+    val setApi = createRetrofit().create(ProductApi::class.java)
 
     private fun createRetrofit(): Retrofit{
         val interceptor = HttpLoggingInterceptor()

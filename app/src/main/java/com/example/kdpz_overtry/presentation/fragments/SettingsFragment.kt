@@ -1,6 +1,5 @@
 package com.example.kdpz_overtry.presentation.fragments
 
-import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,18 +7,14 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kdpz_overtry.R
-import com.example.kdpz_overtry.data.retrofit.WeatherClass
 import com.example.kdpz_overtry.databinding.FragmentSettingsBinding
 import com.example.kdpz_overtry.presentation.adapter.CityAdapter
 import com.example.kdpz_overtry.presentation.adapter.ListOfCities.listCity
 import com.example.newnews.data.factories.ApiRun
 import kotlinx.coroutines.*
-import okhttp3.internal.wait
 
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
@@ -48,7 +43,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             CoroutineScope(Dispatchers.Main).launch {
                 Log.d("beb", "2")
                 try {
-                    val temp = ApiRun.productAPi.getProductById(cityName)
+                    val temp = ApiRun.setApi.getProductById(cityName)
                     if (temp.cod == 200) {
                         Log.d("beb", "2.1 compared")
                         ie = true

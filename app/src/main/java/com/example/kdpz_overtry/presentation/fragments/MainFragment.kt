@@ -1,21 +1,16 @@
 package com.example.kdpz_overtry.presentation.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import android.view.View
-import android.widget.Toast
 import com.example.kdpz_overtry.R
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.example.kdpz_overtry.data.models.Weather
-import com.example.kdpz_overtry.data.retrofit.WeatherClass
+import com.bumptech.glide.Glide
 import com.example.kdpz_overtry.databinding.FragmentMainBinding
-import com.example.kdpz_overtry.presentation.adapter.ListOfCities.listCity
 import com.example.newnews.data.factories.ApiRun
 import kotlinx.coroutines.launch
-import okhttp3.logging.HttpLoggingInterceptor
 
 
 class MainFragment : Fragment(R.layout.fragment_main) {
@@ -30,18 +25,15 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         val cityName = args.cityNAME
 
 
-        val api = ApiRun.productAPi //взяв тарілку
+        val api = ApiRun.setApi //взяв тарілку
 
         lifecycleScope.launch {
             val weatherClass = api.getProductById(cityName)
-            binding.currentTemp.text = weatherClass
-                .main.temp.toString()
-
+            binding.cityName.text = cityName
+            binding.currentTemp.text = "${weatherClass.main.temp.toString()}°C"
+            binding.weatherDescr.text=weatherClass.weather[0].description
+            Glide.with(binding.weatherImage.context).load("https://openweathermap.org/img/wn/${weatherClass.weather[0].icon}@2x.png").into(binding.weatherImage)
         }
-
-
-
-        binding.cityName.text = "Ваше місто - $cityName"
 
 
         binding.setings.setOnClickListener {
