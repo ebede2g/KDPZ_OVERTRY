@@ -44,17 +44,22 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
 
         binding.apply.setOnClickListener {
+            Log.d("beb","start")
             val cityName = binding.cytyName.text.toString()
             var ie = false
             GlobalScope.launch {
+                Log.d("beb","2")
                 val temp = ApiRun.productAPi.getProductById(cityName)
+                Log.d("beb","2.0 start ifelse")
                 if(temp.cod == 200) {
+                    Log.d("beb","2.1 compared")
                    ie = true
+                    Log.d("beb","2.2 ie = $ie (APROVE)")
                 }
+                Log.d("beb","2.3 ie = $ie (APROVE)")
             }
-            Log.d("beb","ie - $ie")
             Thread.sleep(1000)
-            Log.d("beb","kod - $ie")
+            Log.d("beb","3 kod - $ie - not aprove")
             if(ie) {
                 Log.d("beb","kod - 200")
                 findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMainFragment(cityName))
@@ -62,8 +67,9 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             else {
                 Log.d("beb","kod != 200")
                 Toast.makeText(requireContext(), "City not found",Toast.LENGTH_SHORT).show()
+                findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMainFragment("тернопіль"))
             }
-
+            Log.d("beb","end")
         }
 
 
