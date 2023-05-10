@@ -8,8 +8,6 @@ import com.bumptech.glide.Glide
 import com.example.kdpz_overtry.R
 import com.example.kdpz_overtry.databinding.CityItemBinding
 
-
-
 class CityAdapter(val launchfargment: (String) -> Unit) :
     RecyclerView.Adapter<CityAdapter.CityHolder>() {
 

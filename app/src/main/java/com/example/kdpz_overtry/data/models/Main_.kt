@@ -1,5 +1,9 @@
 package com.example.kdpz_overtry.data.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 class Main_(
     val temp: Float,
     val feels_like: Float,
@@ -7,4 +11,4 @@ class Main_(
     val temp_max: Float,
     val pressure: Float,
     val humidity: Float,
-)
+):Parcelable

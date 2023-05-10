@@ -1,6 +1,6 @@
 package com.example.newnews.data.factories
 
-import com.example.kdpz_overtry.data.retrofit.ProductApi
+import com.example.kdpz_overtry.data.retrofit.WeatherApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -12,7 +12,7 @@ object ApiRun {
 
 
 
-    val setApi = createRetrofit().create(ProductApi::class.java)
+    val weatherApi = createRetrofit().create(WeatherApi::class.java)
 
     private fun createRetrofit(): Retrofit{
         val interceptor = HttpLoggingInterceptor()

@@ -1,26 +1,32 @@
 package com.example.kdpz_overtry.presentation.fragments.setting
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bumptech.glide.Glide
 import com.example.kdpz_overtry.data.retrofit.WeatherClass
+import com.example.kdpz_overtry.domain.WeatherUseCase
 import com.example.newnews.data.factories.ApiRun
 import kotlinx.coroutines.launch
 
-class SettingsViewModel {
+class SettingsViewModel: ViewModel() {
     val weatherLiveData = MutableLiveData<WeatherClass?>()
     fun getWeather(cityName: String) {
         viewModelScope.launch {
+            try {
+                val weather = WeatherUseCase.getWeather(cityName)
 
-            weather = ApiRun.setApi.getProductById(cityName)
+                weather!!.cityName = cityName
+                weatherLiveData.postValue(weather)
 
-            weatherLiveData.postValue(weather)
+                Log.d("data", "data receive: success")
+            }
+            catch (e: Exception) {
+                weatherLiveData.postValue(null)
 
-            binding.cityName.text = cityName
-            binding.currentTemp.text = "${weatherClass.main.temp.toString()}°C"
-            binding.weatherDescr.text=weatherClass.weather[0].description
-            Glide.with(binding.weatherImage.context).load("https://openweathermap.org/img/wn/${weatherClass.weather[0].icon}@2x.png").into(binding.weatherImage)
-
+                Log.d("data", "data receive: failure")
+            }
         }
     }
 }
