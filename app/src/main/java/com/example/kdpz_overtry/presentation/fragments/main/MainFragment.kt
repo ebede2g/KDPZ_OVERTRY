@@ -37,6 +37,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             Glide.with(binding.weatherImage.context)
                 .load("https://openweathermap.org/img/wn/${weather!!.weather[0].icon}@2x.png")
                 .into(binding.weatherImage)
+        } else {
+            binding.cityName.text = "Виберіть місто"
+            binding.currentTemp.text = "~~ °C"
+            binding.weatherDescr.text = "Дані відсутні"
+            Glide.with(binding.weatherImage.context)
+                .load(R.drawable.ya_na_mori25)
+                .into(binding.weatherImage)
         }
 
         setFragmentResultListener(SettingsFragment.REQUEST_KEY) { key, bundle ->
