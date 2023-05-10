@@ -1,4 +1,4 @@
-package com.example.kdpz_overtry.presentation.fragments.main
+package com.example.kdpz_overtry.presentation.main
 
 import android.os.Bundle
 import android.util.Log
@@ -8,14 +8,10 @@ import android.view.View
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import com.example.kdpz_overtry.R
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.kdpz_overtry.data.retrofit.WeatherClass
 import com.example.kdpz_overtry.databinding.FragmentMainBinding
-import com.example.kdpz_overtry.presentation.fragments.setting.SettingsFragment
-import com.example.newnews.data.factories.ApiRun
-import kotlinx.coroutines.launch
+import com.example.kdpz_overtry.presentation.settings.SettingsFragment
 
 
 class MainFragment : Fragment(R.layout.fragment_main) {

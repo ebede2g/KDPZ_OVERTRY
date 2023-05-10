@@ -1,4 +1,4 @@
-package com.example.kdpz_overtry.presentation.fragments.setting
+package com.example.kdpz_overtry.presentation.settings
 
 import android.os.Bundle
 import android.util.Log
@@ -16,7 +16,6 @@ import com.example.kdpz_overtry.databinding.FragmentSettingsBinding
 import com.example.kdpz_overtry.presentation.adapter.CityAdapter
 import com.example.kdpz_overtry.data.local.ListOfCities.listCity
 import com.example.kdpz_overtry.data.retrofit.WeatherClass
-import com.example.newnews.data.factories.ApiRun
 import kotlinx.coroutines.*
 
 

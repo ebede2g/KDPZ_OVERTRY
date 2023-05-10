@@ -1,4 +1,4 @@
-package com.example.kdpz_overtry.presentation.fragments.setting
+package com.example.kdpz_overtry.presentation.settings
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
