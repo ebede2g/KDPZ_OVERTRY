@@ -71,15 +71,6 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         }
 
 
-        val setMyCityButton = activity?.findViewById<Button>(R.id.exit)
-        setMyCityButton?.setOnClickListener {
-            val cityName = view.findViewById<TextView>(R.id.cityName)
-            val action =
-                SettingsFragmentDirections.actionSettingsFragmentToMainFragment(cityName.text.toString())
-            findNavController().navigate(action)
-        }
-
-
         binding.apply {
             rcView.layoutManager = LinearLayoutManager(context)
             rcView.adapter = adapter

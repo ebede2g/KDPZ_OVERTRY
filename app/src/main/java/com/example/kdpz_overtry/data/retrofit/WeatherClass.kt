@@ -8,6 +8,6 @@ data class WeatherClass(
     val main: Main_,
     val wind: Wind,
     val clouds: Clouds,
-    val cod: Int
-
+    val cod: Int,
+    var cityName: String
 )

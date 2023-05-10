@@ -5,9 +5,9 @@ import retrofit2.http.Query
 
 var myApiKey = "87d7ef369324355c8bf0a9eca4b13c70"
 
-interface ProductApi {
+interface WeatherApi {
     @GET("weather")
-    suspend fun getProductById(
+    suspend fun getWeatherById(
         @Query("q")city_name: String,
         @Query("appid") apiKey: String = myApiKey,
         @Query("units") units: String = "metric",
