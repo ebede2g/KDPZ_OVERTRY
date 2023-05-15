@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kdpz_overtry.domain.WeatherUseCase
+import com.example.kdpz_overtry.domain.models.MainWeatherClass
 import kotlinx.coroutines.launch
 
 class SettingsViewModel : ViewModel() {

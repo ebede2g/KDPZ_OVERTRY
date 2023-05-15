@@ -8,7 +8,7 @@ import com.example.kdpz_overtry.data.local.weather.Wind
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class MainWeatherClass(
+data class WeatherClass(
     val weather: List<Weather>,
     val main: Main_,
     val wind: Wind,

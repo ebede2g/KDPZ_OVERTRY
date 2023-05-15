@@ -2,6 +2,7 @@ package com.example.kdpz_overtry.domain
 
 import android.util.Log
 import com.example.kdpz_overtry.data.repository.WeatherRepository
+import com.example.kdpz_overtry.domain.models.MainWeatherClass
 
 object WeatherUseCase {
     suspend fun getWeather(cityName: String): MainWeatherClass? {
@@ -23,8 +24,8 @@ object WeatherUseCase {
             val mainWeather = MainWeatherClass(
                 currentWeather.copy(icon = normalImageUrl),
                 weather.main.copy(tempString = temperatureWithCelsius),
-                weather.wind,
-                weather.clouds,
+                weather.wind.copy(),
+                weather.clouds.copy(),
                 weather.cod,
                 cityName)
 

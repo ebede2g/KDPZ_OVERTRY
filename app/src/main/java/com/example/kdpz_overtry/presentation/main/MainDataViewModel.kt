@@ -1,6 +1,7 @@
 package com.examplefun.kdpz_overtry.presentation.main
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.kdpz_overtry.domain.models.MainWeatherClass
 
 
 class MainDataViewModel : ViewModel() {

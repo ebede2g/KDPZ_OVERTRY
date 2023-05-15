@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.kdpz_overtry.R
 import com.example.kdpz_overtry.databinding.FragmentMainBinding
+import com.example.kdpz_overtry.domain.models.MainWeatherClass
 import com.example.kdpz_overtry.presentation.settings.SettingsFragment
 import com.examplefun.kdpz_overtry.presentation.main.MainDataViewModel
 

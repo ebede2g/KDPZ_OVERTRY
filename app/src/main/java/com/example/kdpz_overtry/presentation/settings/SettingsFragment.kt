@@ -14,6 +14,7 @@ import com.example.kdpz_overtry.R
 import com.example.kdpz_overtry.data.local.city.ListOfCities
 import com.example.kdpz_overtry.data.local.city.ListOfCities.listCity
 import com.example.kdpz_overtry.databinding.FragmentSettingsBinding
+import com.example.kdpz_overtry.domain.models.MainWeatherClass
 
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
