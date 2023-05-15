@@ -19,36 +19,38 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private var weather: WeatherClass? = null
 
+    lateinit var viewmodel:MainDataViewModel
+
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMainBinding.bind(view)
 
-        val mainDataViewModel = ViewModelProvider(this).get(MainDataViewModel::class.java)
-        weather = mainDataViewModel.weather
+        viewmodel = ViewModelProvider(this).get(MainDataViewModel::class.java)
 
-        if (weather != null) {
+        viewmodel.weatherLiveData.observe(viewLifecycleOwner) {
             binding.cityName.text = weather!!.cityName
             binding.currentTemp.text = "${weather!!.main.temp}°C"
             binding.weatherDescr.text = weather!!.weather[0].description
             Glide.with(binding.weatherImage.context)
-                .load("https://openweathermap.org/img/wn/${weather!!.weather[0].icon}@2x.png")
-                .into(binding.weatherImage)
-        } else {
-            binding.cityName.text = "Виберіть місто"
-            binding.currentTemp.text = "~~ °C"
-            binding.weatherDescr.text = "Дані відсутні"
-            Glide.with(binding.weatherImage.context)
-                .load(R.drawable.ya_na_mori25)
+                .load("https://openweathermap.org/img/wn/${weather!!.weather[0].icon}@2x.png") // в UseCase
                 .into(binding.weatherImage)
         }
 
+
+
+
+
         setFragmentResultListener(SettingsFragment.REQUEST_KEY) { key, bundle ->
             val weather = bundle.getParcelable<WeatherClass?>("weather")
-
+            if(weather!=null){
+                viewmodel.saveData(weather)
+            }
             Log.d("data", "weather received")
 
             this.weather = weather
-            mainDataViewModel.weather = weather
+            //mainDataViewModel.weather = weather
 
             binding.cityName.text = weather!!.cityName
             binding.currentTemp.text = "${weather!!.main.temp}°C"

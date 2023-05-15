@@ -1,6 +1,4 @@
-package com.example.kdpz_overtry.data.local
-
-import com.example.kdpz_overtry.presentation.adapter.City
+package com.example.kdpz_overtry.data.local.city
 
 object ListOfCities {
     val listCity = listOf(

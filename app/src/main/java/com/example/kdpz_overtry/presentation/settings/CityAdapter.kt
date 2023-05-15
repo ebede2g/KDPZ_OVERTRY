@@ -1,4 +1,4 @@
-package com.example.kdpz_overtry.presentation.adapter
+package com.example.kdpz_overtry.presentation.settings
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kdpz_overtry.R
+import com.example.kdpz_overtry.data.local.city.City
 import com.example.kdpz_overtry.databinding.CityItemBinding
 
 class CityAdapter(val launchfargment: (String) -> Unit) :

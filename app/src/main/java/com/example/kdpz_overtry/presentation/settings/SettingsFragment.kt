@@ -11,12 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kdpz_overtry.R
-import com.example.kdpz_overtry.data.local.ListOfCities
+import com.example.kdpz_overtry.data.local.city.ListOfCities
 import com.example.kdpz_overtry.databinding.FragmentSettingsBinding
-import com.example.kdpz_overtry.presentation.adapter.CityAdapter
-import com.example.kdpz_overtry.data.local.ListOfCities.listCity
+import com.example.kdpz_overtry.data.local.city.ListOfCities.listCity
 import com.example.kdpz_overtry.data.retrofit.WeatherClass
-import kotlinx.coroutines.*
 
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {

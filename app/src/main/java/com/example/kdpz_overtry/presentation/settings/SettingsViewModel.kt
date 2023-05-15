@@ -13,20 +13,20 @@ import kotlinx.coroutines.launch
 class SettingsViewModel: ViewModel() {
     val weatherLiveData = MutableLiveData<WeatherClass?>()
     fun getWeather(cityName: String) {
-        viewModelScope.launch {
-            try {
-                val weather = WeatherUseCase.getWeather(cityName)
-
-                weather!!.cityName = cityName
-                weatherLiveData.postValue(weather)
-
-                Log.d("data", "data receive: success")
-            }
-            catch (e: Exception) {
-                weatherLiveData.postValue(null)
-
-                Log.d("data", "data receive: failure")
-            }
-        }
+//        viewModelScope.launch {
+//            try {
+//                val weather = WeatherUseCase.getWeather(cityName)
+//
+//                weather!!.cityName = cityName
+//                weatherLiveData.postValue(weather)
+//
+//                Log.d("data", "data receive: success")
+//            }
+//            catch (e: Exception) {
+//                weatherLiveData.postValue(null)
+//
+//                Log.d("data", "data receive: failure")
+//            }
+//        }
     }
 }
