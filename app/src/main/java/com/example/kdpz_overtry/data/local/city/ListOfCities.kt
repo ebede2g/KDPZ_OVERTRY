@@ -10,6 +10,6 @@ object ListOfCities {
         City("sumy","https://travels.in.ua/api/Photo/PhotoStreamCIL/830"),
         City("chyhyryn","https://www.navigator-ukraina.com.ua/media/k2/items/cache/88b3960361835836e444d41321daf95e_XL.jpg"),
         City("izmail","https://anga.ua/ifiles/images/Region/Pruchornomorya/Odeska/Izmail/sobor-Izmail.jpg"),
-
+        City("cherkasy","https://cdn.discordapp.com/attachments/1105638221100097606/1107716684262948954/image.png")
     )
 }

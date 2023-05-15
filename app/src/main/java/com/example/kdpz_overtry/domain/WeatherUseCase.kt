@@ -1,13 +1,10 @@
 package com.example.kdpz_overtry.domain
 
 import android.util.Log
-import androidx.lifecycle.viewModelScope
 import com.example.kdpz_overtry.data.repository.WeatherRepository
-import com.example.kdpz_overtry.data.retrofit.WeatherClass
-import kotlinx.coroutines.launch
 
 object WeatherUseCase {
-    suspend fun getWeather(cityName: String): WeatherClass? {
+    suspend fun getWeather(cityName: String): MainWeatherClass? {
 
 
 
@@ -15,13 +12,27 @@ object WeatherUseCase {
             val weather = WeatherRepository.getWeather(cityName)
             Log.d("data", "data receive: success")
 
-            weather?.main.temp = "${weather!!.main.temp}°C"
+            val normalImageUrl = "https://openweathermap.org/img/wn/${weather!!.weather[0].icon}@2x.png"
+
+            val temperature = String.format("%.1f", weather.main.temp)
+
+            val temperatureWithCelsius = "$temperature°C"
+
+            val currentWeather = weather.weather[0].copy()
+
+            val mainWeather = MainWeatherClass(
+                currentWeather.copy(icon = normalImageUrl),
+                weather.main.copy(tempString = temperatureWithCelsius),
+                weather.wind,
+                weather.clouds,
+                weather.cod,
+                cityName)
+
+            return  mainWeather
         }
         catch (e: Exception) {
-            val weather = WeatherClass()
-            Log.d("data", "data receive: failure")
+            Log.d("data", e.message!!)
+            return null
         }
-
-        return WeatherRepository.getWeather(cityName)
     }
 }
